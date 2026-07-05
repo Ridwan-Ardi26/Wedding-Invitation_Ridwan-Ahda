@@ -262,18 +262,19 @@ document.addEventListener("DOMContentLoaded", function () {
             formData.append('kehadiran', status); // PASTIKAN KEY INI SAMA
             formData.append('pesan', message);    // PASTIKAN KEY INI SAMA
 
-            fetch('https://script.google.com/macros/s/AKfycbzAmd0RTg8ybn3eHKzs9AM1q0OElqKEVaq5biPghBvLh4nF4Vcrgt_gCXviGbvCmltHpQ/exec', {
+            fetch('https://script.google.com/macros/s/AKfycby64rH6awmZCdQz-2MZsEPPXxZdTbKkKYKhOt55C1qjrsqQbdwyOmR3qUBZ0Jgt3GKrLA/exec', {
                 method: 'POST',
                 body: formData
             })
-            .then(res => res.json()) // Opsional: menunggu respon dari server
+            .then(res => res.json()) // Ini menunggu hasil dari ContentService di atas
             .then(data => {
-                // ALERT DI SINI: Hanya muncul jika pengiriman benar-benar sukses
+                console.log("Sukses!");
                 alert("Terima kasih! Ucapan Anda telah terkirim.");
+                formRSVP.reset();
             })
-            .catch(error => {
-                console.error('Error!', error.message);
-                alert("Maaf, gagal terkirim. Silakan coba lagi.");
+            .catch(err => {
+                console.error("Error:", err);
+                alert("Gagal terkirim, tapi coba refresh halaman ya.");
             });
         }
     });
