@@ -194,33 +194,33 @@ document.addEventListener("DOMContentLoaded", function () {
     let rsvpData = JSON.parse(localStorage.getItem("wedding_rsvp_list")) || [];
 
     // --- BAGIAN PELUKIS (TETAPKAN INI) ---
-function renderRSVP() {
-    // --- PERBAIKAN: Proteksi agar rsvpData selalu berupa array ---
-    if (!Array.isArray(rsvpData)) {
-        rsvpData = [];
-    }
-    // ------------------------------------------------------------
-
-    rsvpList.innerHTML = "";
-    if (rsvpData.length === 0) {
-        rsvpList.innerHTML = "<p class='text-center' style='font-size:0.8rem; opacity:0.6;'>Belum ada ucapan tertulis.</p>";
-        return;
-    }
+    function renderRSVP() {
+        // --- PERBAIKAN: Proteksi agar rsvpData selalu berupa array ---
+        if (!Array.isArray(rsvpData)) {
+            rsvpData = [];
+        }
+        // ------------------------------------------------------------
     
-    rsvpData.slice().reverse().forEach(function (item) {
-        const rsvpItem = document.createElement("div");
-        rsvpItem.classList.add("rsvp-item");
+        rsvpList.innerHTML = "";
+        if (rsvpData.length === 0) {
+            rsvpList.innerHTML = "<p class='text-center' style='font-size:0.8rem; opacity:0.6;'>Belum ada ucapan tertulis.</p>";
+            return;
+        }
         
-        const badgeColor = item.status === "Hadir" ? "color: green; border-color: green;" : "color: #C62828; border-color: #C62828;";
-        
-        rsvpItem.innerHTML = `
-            <strong>${escapeHtml(item.name)}</strong> 
-            <span class="rsvp-badge" style="${badgeColor}">${item.status}</span>
-            <p style="margin-top: 3px; color: #444;">${escapeHtml(item.message)}</p>
-        `;
-        rsvpList.appendChild(rsvpItem);
-    });
-}
+        rsvpData.slice().reverse().forEach(function (item) {
+            const rsvpItem = document.createElement("div");
+            rsvpItem.classList.add("rsvp-item");
+            
+            const badgeColor = item.status === "Hadir" ? "color: green; border-color: green;" : "color: #C62828; border-color: #C62828;";
+            
+            rsvpItem.innerHTML = `
+                <strong>${escapeHtml(item.name)}</strong> 
+                <span class="rsvp-badge" style="${badgeColor}">${item.status}</span>
+                <p style="margin-top: 3px; color: #444;">${escapeHtml(item.message)}</p>
+            `;
+            rsvpList.appendChild(rsvpItem);
+        });
+    }
 
     function escapeHtml(text) {
         return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
