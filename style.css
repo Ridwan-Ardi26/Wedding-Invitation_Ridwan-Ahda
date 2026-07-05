@@ -1,0 +1,678 @@
+/* =========================================================
+    VARIABEL WARNA & FONT GLOBAL
+    Menyesuaikan tema warna Retro Pop / Doodle
+   ========================================================= */
+:root {
+    --bg-color: #FDF8E7; /* Warna background krem aestethic */
+    --main-color: #A3241C; /* Warna merah marun/bata utama */
+    --text-color: #333333;
+    
+    /* Font dari Google Fonts */
+    --font-heading: 'Caveat Brush', cursive;
+    --font-body: 'Kalam', cursive;
+    --font-sans: 'Poppins', sans-serif; /* Untuk angka/teks formal */
+
+    /* Variabel border doodle / sketchy (bingkai gambar tangan) */
+    --border-wavy-1: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    --border-wavy-2: 15px 225px 15px 255px / 255px 15px 225px 15px;
+}
+
+/* =========================================================
+    RESET & PENGATURAN DASAR UTAMA
+   ========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Animasi smooth saat klik navigasi/link */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--main-color);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Membuat tampilan seperti aplikasi/undangan digital rapi di Laptop & HP */
+.cover-container, .main-container {
+    max-width: 500px;
+    margin: 0 auto; /* Posisi di tengah layar jika dibuka di Laptop/PC */
+    background-color: var(--bg-color);
+    position: relative;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+/* Tipografi Heading */
+h1, h2, h3, h4, h5, h6, .sketch-title, .couple-name, .section-title {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    color: var(--main-color);
+}
+
+.section-padding {
+    padding: 3rem 1.5rem;
+}
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.mb-4 { margin-bottom: 1.5rem; }
+
+/* =========================================================
+    1. COVER PAGE (SAMPUL DEPAN)
+   ========================================================= */
+.cover-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1.5rem;
+}
+
+.doodle-cover {
+    position: absolute;
+    width: 60px;
+    pointer-events: none; /* Agar tidak menghalangi tombol */
+    z-index: 1;
+}
+.doodle-ring { top: 15%; left: 10%; }
+.doodle-ribbon-right { top: 25%; right: 10%; }
+
+.sketch-title {
+    font-size: 2.2rem;
+    line-height: 1.3;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    z-index: 2;
+    position: relative;
+}
+
+.illustration-frame img {
+    width: 250px;
+    max-width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.couple-name {
+    font-size: 3.5rem;
+    margin: 1rem 0 0.5rem;
+}
+
+.wedding-date-badge {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    margin-bottom: 2rem;
+}
+
+.guest-wrapper {
+    margin-bottom: 2rem;
+    z-index: 2;
+    position: relative;
+}
+.guest-label { font-size: 1.1rem; }
+#guest-name { 
+    font-size: 2rem; 
+    margin: 0.5rem 0; 
+    font-family: var(--font-heading); 
+    border-bottom: 1px solid var(--main-color);
+    display: inline-block;
+    padding: 0 10px;
+}
+.guest-note { font-size: 0.8rem; opacity: 0.8; }
+
+/* Tombol Global & Tombol Cover */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    z-index: 2;
+    position: relative;
+}
+.btn-primary {
+    background-color: var(--main-color);
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(163, 36, 28, 0.3);
+}
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+    background-color: #8c1c15;
+    box-shadow: 0 6px 15px rgba(163, 36, 28, 0.5);
+}
+
+/* =========================================================
+    2. SAVE THE DATE (QUOTE & MUSIC PLAYER)
+   ========================================================= */
+.section-title { font-size: 3rem; margin-bottom: 1.5rem; }
+
+.sketch-icon-wrapper img { height: 240px; width: auto; margin-bottom: -10px; }
+
+/* Bingkai Bergelombang (Doodle Border) */
+.wavy-border {
+    border: 2px solid var(--main-color);
+    border-radius: var(--border-wavy-1);
+    padding: 1.5rem;
+    margin: 1rem 0;
+    background-color: transparent;
+    position: relative;
+}
+
+.quote-text { font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; }
+.quote-author { font-family: var(--font-heading); font-size: 1.5rem; }
+
+/* Music Player Retro */
+.music-player-retro {
+    background-color: #1a1a1a;
+    color: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 2rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.player-cover img {
+    width: 75px;
+    height: 75px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+.player-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.progress-container { width: 100%; margin-top: 5px; }
+.progress-bar-custom {
+    height: 4px;
+    background-color: #444;
+    border-radius: 2px;
+    position: relative;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.progress-fill-custom {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 25%; /* Persentase musik berjalan */
+    background-color: var(--main-color);
+    border-radius: 2px;
+}
+.progress-dot {
+    position: absolute;
+    left: 25%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--main-color);
+    border-radius: 50%;
+}
+.time-stamp {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: #aaa;
+    font-family: var(--font-sans);
+}
+.player-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+.btn-icon {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.3s;
+}
+.btn-icon:hover { color: var(--main-color); transform: scale(1.1); }
+.btn-small-icon { font-size: 1rem; color: #888; }
+
+/* =========================================================
+    3. BRIDE & GROOM
+   ========================================================= */
+.bismillah-img { width: 220px; margin-bottom: 1rem; }
+.greeting-text { font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; }
+
+.profile-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/*.left-align { flex-direction: row; text-align: left; }
+.right-align { flex-direction: row-reverse; text-align: right; } */
+
+.profile-img-wrap {
+    flex: 0 0 130px;
+    display: flex;
+    justify-content: center;
+}
+.photo-frame-wavy-new {
+    width: 130px;
+    height: 160px;
+    border: 3px solid var(--main-color);
+    /* Bikin bentuk oval sketchy */
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: relative;
+    padding: 4px;
+}
+.photo-frame-wavy-new img.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+.ribbon-frame { position: absolute; top: -15px; right: -15px; width: 45px; pointer-events: none;}
+
+.profile-info { flex: 1; }
+.profile-name { font-size: 1.8rem; line-height: 1.2; margin-bottom: 0.5rem; }
+.parents-info { font-size: 1rem; line-height: 1.5; }
+.ampersand { font-size: 3.5rem; font-family: var(--font-heading); display: block; margin: 1.5rem 0; }
+
+/* =========================================================
+    4. EVENT DETAILS & CALENDAR
+   ========================================================= */
+.event-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+.disco-ball-img { width: 90px; }
+.section-title-side { font-size: 3rem; text-align: left; line-height: 1; margin: 0; }
+
+.mini-calendar {
+    max-width: 280px;
+    margin: 0 auto 2rem;
+    padding: 1rem;
+}
+.calendar-header {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px dashed var(--main-color);
+    padding-bottom: 0.5rem;
+}
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+}
+.calendar-grid span { padding: 5px 0; }
+.circled-date {
+    border: 2px solid var(--main-color);
+    border-radius: 50%;
+    color: var(--main-color);
+}
+
+.event-info-box { margin-top: 1rem; }
+.event-type { font-size: 1.5rem; margin-bottom: 0.5rem; font-family: var(--font-body); }
+.event-time { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.event-location { font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.5; }
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    border-radius: var(--border-wavy-2);
+}
+.btn-outline:hover {
+    background-color: var(--main-color);
+    color: #fff;
+    border-radius: var(--border-wavy-1); /* Efek sketchy berubah saat hover */
+}
+
+/* =========================================================
+    5. TIMELINE & RSVP
+   ========================================================= */
+.timeline-wrapper {
+    position: relative;
+    margin: 2rem 0;
+    padding: 0 1rem;
+}
+.timeline {
+    border-left: 2px dashed var(--main-color);
+    padding-left: 25px;
+    position: relative;
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+.timeline-dot {
+    position: absolute;
+    left: -32px; /* Posisi di tengah garis border */
+    top: 3px;
+    width: 13px;
+    height: 13px;
+    border: 2px solid var(--main-color);
+    border-radius: 50%;
+    background-color: var(--bg-color);
+}
+.timeline-content h4 { margin: 0 0 5px; font-size: 1.4rem; }
+.timeline-content p { margin: 0; font-size: 1.1rem; }
+
+.doodle-shoes {
+    position: absolute;
+    right: 5px;
+    top: 50px;
+    width: 70px;
+    pointer-events: none;
+}
+
+.rsvp-box {
+    margin-top: 3rem;
+    padding: 2rem 1.5rem;
+}
+.sketch-subtitle { font-size: 2.2rem; margin-bottom: 1.5rem; }
+.form-group { margin-bottom: 1.2rem; text-align: left; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-family: var(--font-heading); font-size: 1.3rem; }
+.sketch-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--main-color);
+    border-radius: var(--border-wavy-2);
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--main-color);
+    outline: none;
+    transition: all 0.3s;
+}
+.sketch-input:focus { border-radius: var(--border-wavy-1); background: rgba(163, 36, 28, 0.05); }
+.sketch-input::placeholder { color: rgba(163, 36, 28, 0.5); }
+.btn-block { width: 100%; border-radius: var(--border-wavy-1); font-size: 1.3rem;}
+
+.rsvp-responses-container {
+    margin-top: 2rem;
+    border-top: 2px dashed var(--main-color);
+    padding-top: 1.5rem;
+}
+.rsvp-title-wrapper { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 1rem; }
+.doodle-table-inline { width: 60px; }
+.rsvp-list { font-size: 1.1rem; opacity: 0.8;}
+
+/* =========================================================
+    6. WEDDING GIFT (REKENING KADO)
+   ========================================================= */
+.gift-intro { font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.6; }
+
+.gift-wrapper { position: relative; }
+.doodle-gift-table {
+    width: 80px;
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Kotak Rekening Double Border Style */
+.gift-card-new {
+    border: 2px solid var(--main-color);
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+    max-width: 320px;
+    position: relative;
+    background-color: var(--bg-color);
+    box-shadow: 0 0 0 4px var(--bg-color), 0 0 0 6px var(--main-color); /* Efek Dobel Garis */
+    z-index: 1;
+}
+.bank-title { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem; }
+.account-number { font-size: 1.6rem; font-family: var(--font-heading); letter-spacing: 2px; margin-bottom: 0.5rem; }
+.account-holder { font-size: 1.1rem; margin-bottom: 1rem; font-style: italic; }
+.btn-copy-acc {
+    background: transparent;
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
+    padding: 6px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: 0.3s;
+}
+.btn-copy-acc:hover { background: var(--main-color); color: #fff; transform: scale(1.05); }
+
+.wa-confirm-wrapper { margin-top: 2.5rem; }
+.wa-intro-text { font-size: 1rem; margin-bottom: 1.2rem; }
+.wa-buttons { display: flex; justify-content: center; gap: 1rem; }
+.btn-wa {
+    background-color: var(--main-color);
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    transition: 0.3s;
+}
+.btn-wa:hover { background-color: #8c1c15; transform: translateY(-3px); box-shadow: 0 4px 8px rgba(163,36,28,0.3); }
+
+/* =========================================================
+    7. LOVE STORY TIMELINE
+   ========================================================= */
+.timeline-love-story {
+    border-left: 2px solid var(--main-color);
+    padding-left: 25px;
+    margin-left: 10px;
+    text-align: left;
+}
+.timeline-love-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+.timeline-love-item::before {
+    content: '♥';
+    position: absolute;
+    left: -35px;
+    top: -2px;
+    color: var(--main-color);
+    font-size: 1.3rem;
+    background: var(--bg-color);
+    padding: 2px 0;
+}
+.timeline-love-item h3 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+.timeline-love-item p { font-size: 1.1rem; line-height: 1.6; text-align: justify; }
+
+/* =========================================================
+    8. COUNTDOWN
+   ========================================================= */
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2.5rem;
+}
+.countdown-item {
+    width: 65px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+.countdown-item span { 
+    font-size: 1.8rem; 
+    font-family: var(--font-heading); 
+}
+.countdown-item small { 
+    font-size: 1rem; 
+}
+
+/* =========================================================
+    9. GALLERY
+   ========================================================= */
+.photo-strip-collage {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.strip-frame {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; 
+    width: 100%;
+    background: transparent; 
+    padding: 0; 
+    border: none; 
+    box-shadow: none; 
+}
+
+.strip-frame img {
+    width: 50%;
+    max-width: 200px; 
+    height: auto;
+    object-fit: cover;
+    border: 3px solid var(--main-color); 
+    box-shadow: 3px 4px 0px var(--main-color); 
+    image-rendering: high-quality;
+
+    transition: transform 0.1s ease-out, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.strip-frame img:nth-child(1) {
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    transform: rotate(-3deg); 
+}
+.strip-frame img:nth-child(2) {
+    border-radius: 15px 225px 15px 255px / 255px 15px 225px 15px;
+    transform: translateY(-8px) rotate(2deg); 
+}
+/*.strip-frame img:nth-child(3) {
+    border-radius: 225px 15px 255px 15px / 15px 255px 15px 225px;
+    transform: rotate(-1deg); 
+}*/
+
+.strip-frame img:hover {
+    box-shadow: 10px 15px 25px rgba(163, 36, 28, 0.4); 
+}
+
+/* =========================================================
+    10. FOOTER
+   ========================================================= */
+footer {
+    background-color: var(--main-color);
+    color: #fff;
+    padding: 2rem 1.5rem;
+    padding-bottom: 5rem;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+.footer-title { 
+    color: #fff; 
+    font-size: 2.5rem; 
+    margin-bottom: 0.2rem; 
+    letter-spacing: 2px;
+    line-height: 1;
+    font-family: var(--font-serif);
+}
+.footer-couple { 
+    font-size: 2rem; 
+    margin-bottom: 1rem; 
+    font-family: var(--font-serif);
+    line-height: 1;
+}
+.copyright { 
+    color: #fff; /* 1. WAJIB DISEDIAKAN: Memastikan warna teks adalah putih */
+    font-size: 0.9rem; 
+    font-family: var(--font-sans); 
+    opacity: 0.8; /* 2. Atur tingkat keburaman (0.7 - 0.9) agar teks putihnya sedikit lebih lembut dibanding judul */
+    margin-top: 0; /* Tambah sedikit jarak atas agar tidak terlalu menempel dengan nama couple */
+    display: block; /* Memastikan elemen turun ke bawah dan mengambil baris baru */
+}
+
+/* =========================================================
+    11. FLOATING AUDIO BUTTON
+   ========================================================= */
+.audio-float-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--bg-color);
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: all 0.3s;
+    animation: spin-slow 4s linear infinite;
+}
+.audio-float-btn:hover { transform: scale(1.1); background-color: var(--main-color); color: var(--bg-color); }
+@keyframes spin-slow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.audio-float-btn.paused { animation: none; } /* Class ini akan ditambahkan lewat JS jika musik berhenti */
+
+/* Utility Classes */
+.hidden { display: none !important; }
+
+/* =========================================================
+    ANIMASI KEYFRAMES
+   ========================================================= */
+/* Animasi mengambang untuk elemen doodle / frame */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+.animate-bounce { animation: float 3s ease-in-out infinite; }
+
+/* Animasi berayun untuk disco ball */
+@keyframes swing {
+    0% { transform: rotate(5deg); }
+    50% { transform: rotate(-5deg); }
+    100% { transform: rotate(5deg); }
+}
+.animate-swing { 
+    animation: swing 3.5s ease-in-out infinite; 
+    transform-origin: top center; 
+}
