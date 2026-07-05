@@ -191,15 +191,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // ==========================================
     // MANAJEMEN DATA RSVP LOCALSTORAGE
     // ==========================================
-    let rsvpData = JSON.parse(localStorage.getItem("wedding_rsvp_list")) || [];
-
-    // --- BAGIAN PELUKIS (TETAPKAN INI) ---
+    let rsvpData = []; 
+    
+    // --- BAGIAN PELUKIS ---
     function renderRSVP() {
-        // --- PERBAIKAN: Proteksi agar rsvpData selalu berupa array ---
+        // Proteksi agar rsvpData selalu berupa array
         if (!Array.isArray(rsvpData)) {
             rsvpData = [];
         }
-        // ------------------------------------------------------------
     
         rsvpList.innerHTML = "";
         if (rsvpData.length === 0) {
@@ -221,76 +220,70 @@ document.addEventListener("DOMContentLoaded", function () {
             rsvpList.appendChild(rsvpItem);
         });
     }
-
+    
     function escapeHtml(text) {
         return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     }
-
-    // --- BAGIAN KURIR (FUNGSI BARU) ---
+    
+    
+    // --- INI LINK WEB APP TERBARU KAMU ---
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyA3pIs0II_a68biZcVcxarxt3FkAJyl7jSYkb1zPwc49BGTxJ2eFLLEDHacPG-BLh66g/exec';
+    
+    
+    // --- BAGIAN KURIR (MENGAMBIL DATA DARI SHEETS SAAT HALAMAN DIBUKA) ---
     function loadAndRenderRSVP() {
-        const sheetURL = 'https://script.google.com/macros/s/AKfycbzAmd0RTg8ybn3eHKzs9AM1q0OElqKEVaq5biPghBvLh4nF4Vcrgt_gCXviGbvCmltHpQ/exec';
-
-        fetch(sheetURL)
+        fetch(GOOGLE_SCRIPT_URL)
             .then(res => res.json())
             .then(data => {
-                rsvpData = data; // Update data lokal
-                renderRSVP();    // Panggil si Pelukis untuk menggambar data dari Sheets
+                rsvpData = data; // Update data lokal dengan isi Sheets
+                renderRSVP();    // Panggil si Pelukis
             })
             .catch(err => {
                 console.log("Gagal ambil data, tampilkan yang ada saja.");
                 renderRSVP();
             });
     }
-
+    
+    // --- BAGIAN PENGIRIMAN (SAAT TOMBOL KIRIM DIKLIK) ---
     formRSVP.addEventListener("submit", function (e) {
         e.preventDefault();
-
+    
         const name = document.getElementById("rsvp-name").value.trim();
         const status = document.getElementById("rsvp-status").value;
         const message = document.getElementById("rsvp-message").value.trim();
-
+    
         if (name && status && message) {
-            // 1. Tampilan instan
+            // 1. Tampilan instan di layar (biar terasa cepat)
             const newResponse = { name, status, message };
             rsvpData.push(newResponse);
             renderRSVP();
-            formRSVP.reset(); // Reset form lebih awal agar tamu tidak klik kirim dua kali
-
-            // 2. Kirim ke Google Sheets
+            formRSVP.reset(); // Reset form agar tidak di-spam klik
+    
+            // 2. Siapkan data untuk Google Sheets
             const formData = new FormData();
-            formData.append('nama', name);      // PASTIKAN KEY INI SAMA DENGAN GOOGLE APPS SCRIPT
-            formData.append('kehadiran', status); // PASTIKAN KEY INI SAMA
-            formData.append('pesan', message);    // PASTIKAN KEY INI SAMA
-
-            fetch('https://script.google.com/macros/s/AKfycby64rH6awmZCdQz-2MZsEPPXxZdTbKkKYKhOt55C1qjrsqQbdwyOmR3qUBZ0Jgt3GKrLA/exec', {
+            formData.append('nama', name);      
+            formData.append('kehadiran', status); 
+            formData.append('pesan', message);    
+    
+            // 3. Kirim ke Google Sheets memakai Link yang sama
+            fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 body: formData
             })
-            .then(res => res.json()) // Ini menunggu hasil dari ContentService di atas
+            .then(res => res.json()) 
             .then(data => {
-                console.log("Sukses!");
+                console.log("Sukses tersimpan di Google Sheets!");
                 alert("Terima kasih! Ucapan Anda telah terkirim.");
-                formRSVP.reset();
             })
             .catch(err => {
                 console.error("Error:", err);
-                alert("Gagal terkirim, tapi coba refresh halaman ya.");
+                alert("Gagal mengirim ke database, tapi coba refresh halaman ya.");
             });
         }
     });
-
     
-    function escapeHtml(text) {
-        return text
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-    }
-
-    loadAndRenderRSVP();
-    
+    // Panggil fungsi kurir pertama kali saat web dibuka
+    loadAndRenderRSVP();    
     // ==========================================
     // EFEK 3D TILT GALLERY (MENGIKUTI KURSOR)
     // ==========================================
