@@ -158,7 +158,12 @@ h1, h2, h3, h4, h5, h6, .sketch-title, .couple-name, .section-title {
    ========================================================= */
 .section-title { font-size: 3rem; margin-bottom: 1.5rem; }
 
-.sketch-icon-wrapper img { height: 240px; width: auto; margin-bottom: -10px; }
+.sketch-icon-wrapper img { 
+    max-width: 90%;
+    height: auto;
+    margin: 0 auto; 
+    display: block; 
+}
 
 /* Bingkai Bergelombang (Doodle Border) */
 .wavy-border {
@@ -170,8 +175,16 @@ h1, h2, h3, h4, h5, h6, .sketch-title, .couple-name, .section-title {
     position: relative;
 }
 
-.quote-text { font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; }
-.quote-author { font-family: var(--font-heading); font-size: 1.5rem; }
+.quote-text { 
+    font-size: 1.1rem; 
+    line-height: 1.4; 
+    margin-bottom: 0.8rem; 
+}
+
+.quote-author { 
+    font-family: var(--font-heading); 
+    font-size: 1.5rem; 
+}
 
 /* Music Player Retro */
 .music-player-retro {
@@ -425,30 +438,67 @@ h1, h2, h3, h4, h5, h6, .sketch-title, .couple-name, .section-title {
 /* =========================================================
     6. WEDDING GIFT (REKENING KADO)
    ========================================================= */
-.gift-intro { font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.6; }
+.gift-intro { font-size: 1.1rem; margin-bottom: 1rem; line-height: 1; }
 
 .gift-wrapper { position: relative; }
-.doodle-gift-table {
-    width: 80px;
-    position: absolute;
-    left: -10px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    z-index: 2;
+
+/* Container baru khusus untuk rekening */
+.bank-cards-container {
+    position: relative; /* Menjadi jangkar untuk posisi absolute si meja */
+    max-width: 320px;
+    margin: 0 auto;
 }
 
-/* Kotak Rekening Double Border Style */
+/* Doodle meja melayang di sisi pinggir */
+.doodle-gift-table {
+    width: 90px;
+    position: absolute;
+    left: -20px; /* Atur angka ini untuk menggeser meja ke kiri/kanan. Jika ingin di kanan ganti jadi right: -20px */
+    top: 50%; /* Sekarang 50%-nya akan pas di antara rekening 1 dan 2 */
+    
+    /* Menggunakan animasi agar gambarnya benar-benar melayang secara visual */
+    animation: floatDoodle 3s ease-in-out infinite; 
+    
+    z-index: 10; /* Pastikan selalu berada di atas garis kotak */
+    pointer-events: none;
+}
+
+/* Kunci Animasi Bergerak Naik-Turun (Agar tidak "mati") */
+@keyframes floatDoodle {
+    0% {
+        transform: translateY(-50%) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-60%) rotate(4deg); /* Meja bergerak naik sedikit dan miring */
+    }
+    100% {
+        transform: translateY(-50%) rotate(0deg);
+    }
+}
+
+/* Kotak Rekening Estetik ala Retro-Pop */
 .gift-card-new {
-    border: 2px solid var(--main-color);
+    border: 2px solid var(--main-color); /* Garis tepi solid */
+    border-radius: 16px; /* Ujung melengkung agar lebih lembut */
     padding: 1.5rem;
     margin: 1.5rem auto;
     max-width: 320px;
     position: relative;
     background-color: var(--bg-color);
-    box-shadow: 0 0 0 4px var(--bg-color), 0 0 0 6px var(--main-color); /* Efek Dobel Garis */
+    
+    /* Ganti efek dobel garis dengan bayangan tebal ala Retro-Pop */
+    box-shadow: 6px 6px 0px var(--main-color); 
+    
     z-index: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+/* Tambahan Animasi Estetik saat kotak disentuh/di-scroll */
+.gift-card-new:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px var(--main-color);
+}
+
 .bank-title { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.5rem; }
 .account-number { font-size: 1.6rem; font-family: var(--font-heading); letter-spacing: 2px; margin-bottom: 0.5rem; }
 .account-holder { font-size: 1.1rem; margin-bottom: 1rem; font-style: italic; }
@@ -504,7 +554,7 @@ h1, h2, h3, h4, h5, h6, .sketch-title, .couple-name, .section-title {
     padding: 2px 0;
 }
 .timeline-love-item h3 { font-size: 1.8rem; margin-bottom: 0.5rem; }
-.timeline-love-item p { font-size: 1.1rem; line-height: 1.6; text-align: justify; }
+.timeline-love-item p { font-size: 1.1rem; line-height: 1.4; text-align: justify; }
 
 /* =========================================================
     8. COUNTDOWN
