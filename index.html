@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Undangan Pernikahan: Ridwan & Ahda</title>
+    
+    <!-- FONTS: Mengambil font dari Google Fonts (Caveat untuk tulisan tangan, Poppins untuk teks standar) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- FONT AWESOME: Library untuk memunculkan ikon (seperti ikon amplop, map, play music, dll) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS CSS: Library untuk efek animasi kemunculan elemen saat layar di-scroll (Animate On Scroll) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    
+    <!-- LOCAL CSS: File gaya tampilan utama milikmu -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ========================================== -->
+    <!-- 1. COVER PAGE (Halaman Sampul Depan)       -->
+    <!-- ========================================== -->
+    <div id="cover-page" class="cover-container">
+        
+        <!-- === PLACEHOLDER DOODLE ART === -->
+        <!-- Ganti atribut src="..." di bawah ini dengan lokasi file gambar doodle kamu -->
+        <img src="Accessories/Ring 1.svg" alt="Cincin" class="doodle-cover doodle-ring" data-aos="fade-up" data-aos-delay="100">
+        <img src="Accessories/Pita 1.svg" alt="Pita" class="doodle-cover doodle-ribbon-right" data-aos="fade-up" data-aos-delay="200">
+        <!-- ============================== -->
+
+        <div class="cover-content text-center">
+            <!-- Judul Utama -->
+            <h2 class="sketch-title" data-aos="fade-up" data-aos-delay="300">THESE KIDS<br>ARE GETTING<br>MARRIED</h2>
+            
+            <!-- Ilustrasi Tengah -->
+            <div class="illustration-frame animate-bounce mt-4" data-aos="fade-up" data-aos-delay="400">
+                <!-- Pastikan gambar ilustrasimu sudah sesuai posisinya -->
+                <img src="Images/Foto 12.png" alt="Ilustrasi Cover" class="sketch-img">
+            </div>
+            
+            <!-- Nama & Tanggal -->
+            <h1 class="couple-name" data-aos="fade-up" data-aos-delay="500">Ridwan & Ahda</h1>
+            <p class="wedding-date-badge" data-aos="fade-up" data-aos-delay="600">02.08.2026</p>
+            
+            <!-- Info Tamu (Disesuaikan agar lebih rapi & menyatu) -->
+            <div class="guest-wrapper" data-aos="fade-up" data-aos-delay="700">
+                <p class="guest-label">Kepada Bapak/Ibu/Saudara/i</p>
+                <h3 id="guest-name">Nama Tamu Undangan</h3>
+                <p class="guest-note">*) Mohon maaf apabila ada kesalahan dalam penulisan nama/gelar</p>
+            </div>
+
+            <!-- Tombol (Tanpa ikon amplop sesuai referensi) -->
+            <button id="btn-open" class="btn btn-primary btn-sketch-cover" data-aos="fade-in" data-aos-delay="800">
+                Open Invitation
+            </button>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- AUDIO ELEMENT (Musik Latar Belakang)       -->
+    <!-- ========================================== -->
+    <audio id="bg-music" loop>
+        <source src="MALIQ & D’Essentials — Kita Bikin Romantis (Official Lyric Video) - MALIQ & D'Essentials (320k).mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <!-- ========================================== -->
+    <!-- MAIN CONTENT CONTAINER (Isi Utama Undangan)-->
+    <!-- ========================================== -->
+    <main id="main-content" class="main-container hidden">
+
+        <!-- --- 2. SAVE THE DATE SECTION --- -->
+        <section id="save-the-date" class="section-padding text-center">
+            <h2 class="section-title" data-aos="fade-up" data-aos-delay="300">SAVE THE DATE!</h2>
+            
+            <div class="sketch-icon-wrapper" data-aos="fade-up" data-aos-delay="150">
+                <img src="Images/1.png" alt="Pinky Promise" class="sketch-icon">
+            </div>
+
+            <div class="quote-box wavy-border" data-aos="fade-up" data-aos-delay="300">
+                <p class="quote-text">
+                    "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+                </p>
+                <span class="quote-author">- Ar-Rum: 21 -</span>
+            </div>
+
+            <!-- KOMPONEN: Mockup Music Player ala Retro-Pop -->
+            <div class="music-player-retro" data-aos="fade-up" data-aos-delay="450">
+                <div class="player-cover">
+                    <img src="Images/Foto 14.jpeg" alt="Music Cover">
+                </div>
+
+                <div class="player-body">
+                    <div class="progress-container">
+                        <div class="progress-bar-custom">
+                            <div class="progress-fill-custom"></div>
+                            <div class="progress-dot"></div>
+                        </div>
+                        <div class="time-stamp">
+                            <span class="current-time">00:00</span>
+                            <span class="total-time">00:00</span>
+                        </div>
+                    </div>
+
+                    <div class="player-buttons">
+                        <button class="btn-icon btn-small-icon"><i class="fa-solid fa-repeat"></i></button>
+                        <button class="btn-icon"><i class="fa-solid fa-backward-step"></i></button>
+                        <button id="btn-play-pause" class="btn-icon btn-main-play"><i class="fa-solid fa-play"></i></button>
+                        <button class="btn-icon"><i class="fa-solid fa-forward-step"></i></button>
+                        <button class="btn-icon btn-small-icon"><i class="fa-solid fa-shuffle"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- 3. BRIDE & GROOM --- -->
+        <section id="bride-groom" class="section-padding text-center">
+            
+            <img src="Accessories/Code_Generated_Image.png" alt="Bismillah" class="bismillah-img" data-aos="fade-up">
+            <p class="greeting-text" data-aos="fade-up" data-aos-delay="150">Assalamu'alaikum Warahmatullahi Wabarakatuh<br><br>Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan kami...</p>
+            
+            <h2 class="section-title mb-4" data-aos="fade-up" data-aos-delay="300">Bride & Groom</h2>
+
+            <!-- GROOM (Gambar Kiri, Teks Kanan) -->
+            <div class="profile-row left-align" data-aos="fade-up" data-aos-delay="400">
+                <div class="profile-img-wrap">
+                    <div class="photo-frame-wavy-new">
+                        <img src="Images/Foto 10.png" alt="Groom" class="profile-img">
+                        <!-- Tambahkan gambar pita kecil di atas frame jika ada -->
+                        <img src="Images/doodle-ribbon-small.png" class="ribbon-frame" alt="">
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <h3 class="profile-name">Ridwan Ardiansyah, A.Md.T</h3>
+                    <p class="parents-info">Putra dari<br>Bapak <strong>Susanto, S.Pd</strong><br>dan Ibu <strong>Siti Sulfiah</strong></p>
+                </div>
+            </div>
+
+            <span class="ampersand" data-aos="fade-up" data-aos-delay="500">&</span>
+
+            <!-- BRIDE (Teks Kiri, Gambar Kanan) -->
+            <div class="profile-row right-align" data-aos="fade-up" data-aos-delay="600">
+                <div class="profile-info text-right">
+                    <h3 class="profile-name">Ahda Silvia Rizqi, A.Md.T</h3>
+                    <p class="parents-info">Putri dari<br>Bapak <strong>Solechudin</strong><br>dan Ibu <strong>Basariyah</strong></p>
+                </div>
+                <div class="profile-img-wrap">
+                    <div class="photo-frame-wavy-new">
+                        <img src="Images/Foto 8.png" alt="Bride" class="profile-img">
+                        <img src="Images/doodle-ribbon-small.png" class="ribbon-frame" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- 4. EVENT DETAILS SECTION (Informasi Acara) --- -->
+        <section id="event-details" class="section-padding">
+            <div class="event-header-container" data-aos="fade-up">
+                <div class="event-header-left">
+                    <img src="Accessories/Disco 1.svg" alt="Disco Ball" class="disco-ball-img animate-swing">
+                </div>
+                <div class="event-header-right">
+                    <h2 class="section-title-side">Acara<br>Pernikahan</h2>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <div class="mini-calendar wavy-border" data-aos="fade-up" data-aos-delay="150">
+                    <div class="calendar-header">Agustus 2026</div>
+                    <div class="calendar-grid">
+                        <span>S</span><span>S</span><span>R</span><span>K</span><span>J</span><span>S</span><span>M</span>
+                        <span></span><span></span><span></span><span></span><span></span><span>1</span><span class="circled-date">2</span>
+                        <span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+                        <span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
+                    </div>
+                </div>
+
+                <div class="event-info-box" data-aos="fade-up" data-aos-delay="300">
+                    <h4 class="event-type"><i class="fa-solid fa-ring"></i> Akad & Resepsi</h4>
+                    <p class="event-time"><strong>Ahad, 02 Agustus 2026</strong><br>09.00 WIB - Selesai</p>
+                    <p class="event-location"><strong>Kediaman Keluarga Bapak Solechudin</strong><br>Kuwaon, Mekarsari RT 02/RW 01, Kutowinangun, kebumen</p>
+                    
+                    <a href="https://maps.app.goo.gl/LdPYWmPz8Tt6AtEPA" target="_blank" class="btn btn-outline btn-sketch">
+                        <i class="fa-solid fa-map-location-dot"></i> See Location
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- 5. TIMELINE & RSVP SECTION --- -->
+        <section id="timeline-rsvp" class="section-padding">
+            <h2 class="section-title text-center" data-aos="fade-up">Timeline & RSVP</h2>
+
+            <div class="timeline-wrapper">
+                <div class="timeline">
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="150">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>09.00 - 10.00 WIB</h4>
+                            <p>Akad Nikah yang Khidmat</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h4>11.00 - Selesai WIB</h4>
+                            <p>Resepsi & Hiburan</p>
+                        </div>
+                    </div>
+                </div>
+                <img src="Accessories/18.png" alt="Doodle Sepatu" class="doodle-item doodle-shoes" data-aos="fade-up" data-aos-delay="600">
+            </div>
+
+            <div class="rsvp-wrapper">
+                <div class="rsvp-box wavy-border" data-aos="fade-up" data-aos-delay="700">
+                    <h3 class="sketch-subtitle text-center">Konfirmasi Kehadiran</h3>
+                    <form id="form-rsvp">
+                        <div class="form-group">
+                            <label for="rsvp-name">Nama Tamu</label>
+                            <input type="text" id="rsvp-name" required placeholder="Masukkan nama Anda..." class="sketch-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="rsvp-status">Konfirmasi</label>
+                            <select id="rsvp-status" required class="sketch-input">
+                                <option value="" disabled selected>Apakah Anda akan hadir?</option>
+                                <option value="Hadir">Ya, Saya Akan Hadir</option>
+                                <option value="Tidak Hadir">Maaf, Tidak Bisa Hadir</option>
+                            </select>
+                        </div>
+                        <div class="form-group textarea-group">
+                            <label for="rsvp-message">Pesan / Doa Restu</label>
+                            <textarea id="rsvp-message" rows="4" required placeholder="Tulis doa restu Anda..." class="sketch-input"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block btn-sketch">Kirim Konfirmasi</button>
+                    </form>
+
+                    <div class="rsvp-responses-container">
+                        <div class="rsvp-title-wrapper">
+                            <img src="Accessories/20.png" alt="Doodle Meja" class="doodle-table-inline">
+                            <h4>Ucapan & Doa dari Teman:</h4>
+                        </div>
+                        <div id="rsvp-list" class="rsvp-list"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- 6. WEDDING GIFT SECTION (Kado Digital) --- -->
+        <section id="wedding-gift" class="section-padding text-center">
+            <h2 class="section-title" data-aos="fade-up">Wedding Gift</h2>
+            
+            <p class="gift-intro" data-aos="fade-up" data-aos-delay="150">
+                Doa Restu Anda merupakan karunia yang sangat berarti bagi kami.<br><br>
+                Dan jika memberi adalah ungkapan tanda kasih, Anda dapat memberi melalui dibawah ini.
+            </p>
+
+            <div class="gift-wrapper">
+                
+                <!-- === PLACEHOLDER DOODLE MEJA MAKAN === -->
+                <img src="Accessories/8.png" alt="Doodle Table" class="doodle-gift-table" data-aos="fade-up" data-aos-delay="300">
+                
+                <!-- KOTAK REKENING 1 -->
+                <div class="gift-card-new" data-aos="fade-up" data-aos-delay="450">
+                    <div class="bank-title"><span>🏦</span> MANDIRI</div>
+                    <div class="account-number" id="rek-ridwan">1370022193649</div>
+                    <div class="account-holder">Account name:<br>Ridwan Ardiansyah</div>
+                    <button class="btn-copy-acc" onclick="copyRekening('rek-ridwan', this)">Salin Rekening</button>
+                </div>
+
+                <!-- KOTAK REKENING 2 -->
+                <div class="gift-card-new" data-aos="fade-up" data-aos-delay="600">
+                    <div class="bank-title"><span>🏦</span> MANDIRI</div>
+                    <div class="account-number" id="rek-ahda">1370022198010</div>
+                    <div class="account-holder">Account name:<br>Ahda Silvia Rizqi</div>
+                    <button class="btn-copy-acc" onclick="copyRekening('rek-ahda', this)">Salin Rekening</button>
+                </div>
+
+                <!-- KONFIRMASI WA -->
+                <div class="wa-confirm-wrapper" data-aos="fade-up" data-aos-delay="750">
+                    <p class="wa-intro-text">
+                        Dan bisa mengirimkan hadiah dalam bentuk fisik melalui konfirmasi ke nomor berikut:
+                    </p>
+                    <div class="wa-buttons">
+                        <a href="https://wa.me/6282132945048?text=Halo%20Ridwan,%20saya%20ingin%20konfirmasi%20pengiriman%20kado%20fisik" target="_blank" class="btn-wa">WA Ridwan</a>
+                        <a href="https://wa.me/6285974872753?text=Halo%20Ahda,%20saya%20ingin%20konfirmasi%20pengiriman%20kado%20fisik" target="_blank" class="btn-wa">WA Ahda</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- --- 7. LOVE STORY SECTION --- -->
+        <section id="love-story" class="section-padding text-center">
+            <h2 class="section-title" data-aos="fade-up">Our Love Story</h2>
+            
+            <div class="timeline-love-story">
+                
+                <div class="timeline-love-item" data-aos="fade-up" data-aos-delay="150">
+                    <h3>Awal Pertemuan</h3>
+                    <p>Semua berawal dari bangku kuliah yang tidak pernah kami rencanakan sebelumnya. Tanpa disadari, rasa nyaman itu tumbuh menjadi sesuatu yang lebih berarti. Hari demi hari membawa kami untuk saling mengenal lebih dekat. Percakapan sederhana berubah menjadi kenyamanan, perhatian kecil berubah menjadi rasa yang semakin dalam.</p>
+                </div>
+
+                <div class="timeline-love-item" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Perjalanan Bersama</h3>
+                    <p>Pada tahun 2021, kami memutuskan untuk memulai perjalanan sebagai sepasang kekasih. Bersama, kami belajar bahwa cinta bukan hanya tentang momen-momen bahagia, tetapi juga tentang bertahan, memahami, dan saling mendukung dalam setiap keadaan.</p>
+                </div>
+
+                <div class="timeline-love-item" data-aos="fade-up" data-aos-delay="450">
+                    <h3>Komitmen</h3>
+                    <p>Setelah 4 tahun terlewati, kami sampai pada satu keputusan yang sama untuk melanjutkan cerita ini ke jenjang yang lebih serius. Pada 7 Juni 2025, kami mengikat komitmen dalam sebuah lamaran. Dan kini, dengan penuh rasa syukur, kami siap membuka babak baru kehidupan kami sebagai suami dan istri pada 2 Agustus 2026. Dari teman kuliah, menjadi pasangan hidup. Siapa sangka, pertemuan sederhana di masa kuliah ternyata menjadi awal dari cerita seumur hidup.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- --- 8. COUNTDOWN & GALLERY SECTION --- -->
+        <section id="countdown" class="section-padding text-center">
+            <h2 class="section-title" data-aos="fade-up">Menuju Hari Bahagia</h2>
+            
+            <div class="countdown-container" data-aos="fade-up" data-aos-delay="150">
+                <div class="countdown-item wavy-border"><span id="days">00</span><small>Hari</small></div>
+                <div class="countdown-item wavy-border"><span id="hours">00</span><small>Jam</small></div>
+                <div class="countdown-item wavy-border"><span id="minutes">00</span><small>Menit</small></div>
+                <div class="countdown-item wavy-border"><span id="seconds">00</span><small>Detik</small></div>
+            </div>
+
+            <div class="photo-strip-collage"> 
+                <div class="strip-frame" data-aos="fade-up">
+                    <img src="Images/Foto 15.jpeg" alt="Collage 1" data-aos="fade-up" data-aos-delay="150">
+                    <img src="Images/Foto 16.jpeg" alt="Collage 2" data-aos="fade-up" data-aos-delay="300">
+                    <!--<img src="Images/WhatsApp Image 2026-07-04 at 01.27.45.jpeg" alt="Collage 3" data-aos="fade-up" data-aos-delay="450"> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- --- 9. FOOTER (Penutup Halaman) --- -->
+        <footer class="text-center">
+            <h2 class="footer-title" data-aos="fade-up">SEE YOU ON 2.8.26</h2>
+            <p class="footer-couple" data-aos="fade-up" data-aos-delay="150">Ridwan & Ahda</p>
+            <p class="copyright" data-aos="fade-up" data-aos-delay="300" data-aos-anchor=".footer-couple" data-aos-offset="0">© 2026 Built with RAVA Digital Project</p>
+        </footer>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- 10. FLOATING AUDIO CONTROL                 -->
+    <!-- ========================================== -->
+    <button id="floating-audio-btn" class="audio-float-btn hidden"><i class="fa-solid fa-circle-pause"></i></button>
+
+    <!-- JAVASCRIPT INJECTION -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
