@@ -276,8 +276,8 @@ h1, h2, h3, h4, h5, h6, .sketch-title, .couple-name, .section-title {
     margin-bottom: 1.5rem;
 }
 
-/*.left-align { flex-direction: row; text-align: left; }
-.right-align { flex-direction: row-reverse; text-align: right; } */
+.left-align { flex-direction: row; text-align: left; }
+/*.right-align { flex-direction: row-reverse; text-align: right; } */
 
 .profile-img-wrap {
     flex: 0 0 130px;
