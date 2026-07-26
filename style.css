@@ -312,7 +312,7 @@ h1, h2, h3, h4, h5, h6, .sketch-title, .couple-name, .section-title {
 .address-text {
     font-family: var(--font-body); /* Gunakan font tulisan tangan/body yang sama */
     font-size: 0.85rem; /* Ukuran dibuat lebih kecil dari nama orang tua */
-    color: var(--text-color); /* Atau gunakan var(--main-color) jika ingin merah */
+    color: var(--main-color); /* Atau gunakan var(--main-color) jika ingin merah */
     opacity: 0.8; /* Dibuat sedikit transparan agar tidak mendominasi */
     margin-top: 8px; /* Jarak antara nama orang tua dan alamat */
     font-style: italic; /* Gaya miring agar estetik */
