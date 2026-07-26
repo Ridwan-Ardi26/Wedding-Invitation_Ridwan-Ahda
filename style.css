@@ -317,11 +317,6 @@ h1, h2, h3, h4, h5, h6, .sketch-title, .couple-name, .section-title {
     margin-top: 8px; /* Jarak antara nama orang tua dan alamat */
     font-style: italic; /* Gaya miring agar estetik */
     line-height: 1.4;
-    
-    /* Mencegah teks terlalu panjang merusak layout ke samping */
-    max-width: 90%; 
-    margin-left: auto;
-    margin-right: auto;
 }
 
 /* =========================================================
